@@ -1,5 +1,6 @@
 package com.seantong.springbootmall.controller;
 
+import com.seantong.springbootmall.constant.ProductCategory;
 import com.seantong.springbootmall.dao.impl.ProductDaoImpl;
 import com.seantong.springbootmall.dto.ProductRequest;
 import com.seantong.springbootmall.model.Product;
@@ -21,10 +22,12 @@ public class ProductController {
     private ProductService productService;
 
     @GetMapping("/products")
-    public ResponseEntity<List<Product>> getProduct(){
+    public ResponseEntity<List<Product>> getProduct(
+           @RequestParam(required = false) ProductCategory category,
+           @RequestParam(required = false) String search
+    ){
+        List<Product> productlist = productService.getProducts(category,search);
 
-        List<Product> productlist = productService.getProducts();
-        
         return ResponseEntity.status(HttpStatus.OK).body(productlist);
 
     }

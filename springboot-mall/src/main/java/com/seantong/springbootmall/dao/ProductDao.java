@@ -1,5 +1,6 @@
 package com.seantong.springbootmall.dao;
 
+import com.seantong.springbootmall.constant.ProductCategory;
 import com.seantong.springbootmall.dto.ProductRequest;
 import com.seantong.springbootmall.model.Product;
 
@@ -7,7 +8,7 @@ import java.util.List;
 
 public interface ProductDao {
 
-    List<Product> getProducts();
+    List<Product> getProducts(ProductCategory category,String search);
 
     Product getProductById(Integer productId);
 
@@ -15,6 +16,6 @@ public interface ProductDao {
 
     void updateProduct(Integer productId , ProductRequest productRequest);
 
-    void deleteProductById(Integer producyId);
+    void deleteProductById(Integer productId);
 
 }
