@@ -1,5 +1,6 @@
 package com.seantong.springbootmall.controller;
 
+import com.seantong.springbootmall.dao.impl.ProductDaoImpl;
 import com.seantong.springbootmall.dto.ProductRequest;
 import com.seantong.springbootmall.model.Product;
 import com.seantong.springbootmall.service.ProductService;
@@ -11,11 +12,23 @@ import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
 
+import java.util.List;
+
 @RestController
 public class ProductController {
 
     @Autowired
     private ProductService productService;
+
+    @GetMapping("/products")
+    public ResponseEntity<List<Product>> getProduct(){
+
+        List<Product> productlist = productService.getProducts();
+        
+        return ResponseEntity.status(HttpStatus.OK).body(productlist);
+
+    }
+
     @GetMapping("/products/{productId}")
     public ResponseEntity<Product> getProduct(@PathVariable Integer productId){
 
