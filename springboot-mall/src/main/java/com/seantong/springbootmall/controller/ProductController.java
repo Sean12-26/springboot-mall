@@ -24,17 +24,23 @@ public class ProductController {
 
     @GetMapping("/products")
     public ResponseEntity<List<Product>> getProduct(
+            //查詢條件
            @RequestParam(required = false) ProductCategory category,
-           @RequestParam(required = false) String search
+           @RequestParam(required = false) String search,
+
+           //排序
+           @RequestParam(defaultValue = "created_date") String orderBy,
+           @RequestParam(defaultValue = "desc") String sort
     ){
         ProductQueryParams productQueryParams = new ProductQueryParams();
         productQueryParams.setCategory(category);
         productQueryParams.setSearch(search);
+        productQueryParams.setOrderBy(orderBy);
+        productQueryParams.setSort(sort);
 
         List<Product> productlist = productService.getProducts(productQueryParams);
 
         return ResponseEntity.status(HttpStatus.OK).body(productlist);
-
     }
 
     @GetMapping("/products/{productId}")
@@ -47,7 +53,6 @@ public class ProductController {
             return ResponseEntity.status(HttpStatus.NOT_FOUND).build();
         }
     }
-
     @PostMapping("/products")
     public ResponseEntity<Product> createProduct(@RequestBody @Valid ProductRequest productRequest){
         Integer productId = productService.createProduct(productRequest);
@@ -55,7 +60,6 @@ public class ProductController {
 
         return ResponseEntity.status(HttpStatus.CREATED).body(product);
     }
-
     @PutMapping("/products/{productId}")
     public ResponseEntity<Product> updateProduct(@PathVariable Integer productId,
                                                  @RequestBody @Valid ProductRequest productRequest){
