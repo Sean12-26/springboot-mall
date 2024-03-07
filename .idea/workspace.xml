@@ -1,7 +1,20 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <project version="4">
+  <component name="AutoImportSettings">
+    <option name="autoReloadType" value="SELECTIVE" />
+  </component>
   <component name="ChangeListManager">
-    <list default="true" id="01e8f0b9-e75e-45d3-883f-1a0274a29e52" name="Changes" comment="" />
+    <list default="true" id="01e8f0b9-e75e-45d3-883f-1a0274a29e52" name="Changes" comment="">
+      <change afterPath="$PROJECT_DIR$/springboot-mall/src/main/java/com/seantong/springbootmall/model/Order.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/springboot-mall/src/main/java/com/seantong/springbootmall/model/OrderItem.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/springboot-mall/src/test/java/com/seantong/springbootmall/controller/ProductControllerTest.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/springboot-mall/src/test/resources/application.properties" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/springboot-mall/src/test/resources/data.sql" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/springboot-mall/src/test/resources/schema.sql" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/springboot-mall.iml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/springboot-mall.iml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/springboot-mall/src/main/resources/application.properties" beforeDir="false" afterPath="$PROJECT_DIR$/springboot-mall/src/main/resources/application.properties" afterDir="false" />
+    </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
     <option name="HIGHLIGHT_NON_ACTIVE_CHANGELIST" value="false" />
@@ -10,9 +23,15 @@
   <component name="Git.Settings">
     <option name="RECENT_GIT_ROOT_PATH" value="$PROJECT_DIR$" />
   </component>
-  <component name="ProjectColorInfo"><![CDATA[{
-  "associatedIndex": 8
-}]]></component>
+  <component name="HighlightingSettingsPerFile">
+    <setting file="file://$PROJECT_DIR$/springboot-mall/src/main/java/com/seantong/springbootmall/dao/UserDao.java" root0="FORCE_HIGHLIGHTING" />
+  </component>
+  <component name="KubernetesApiProvider">{
+  &quot;isMigrated&quot;: true
+}</component>
+  <component name="ProjectColorInfo">{
+  &quot;associatedIndex&quot;: 8
+}</component>
   <component name="ProjectId" id="2dBAYDcVPY4KOtpPJnwXsQlUQkx" />
   <component name="ProjectLevelVcsManager" settingsEditedManually="true" />
   <component name="ProjectViewState">
@@ -23,14 +42,30 @@
   "keyToString": {
     "RunOnceActivity.OpenProjectViewOnStart": "true",
     "RunOnceActivity.ShowReadmeOnStart": "true",
+    "ignore.virus.scanning.warn.message": "true",
     "kotlin-language-version-configured": "true",
+    "last_opened_file_path": "C:/Users/sean8/Desktop/springboot-mall",
+    "node.js.detected.package.eslint": "true",
+    "node.js.detected.package.tslint": "true",
+    "node.js.selected.package.eslint": "(autodetect)",
+    "node.js.selected.package.tslint": "(autodetect)",
     "nodejs_package_manager_path": "npm",
+    "project.structure.last.edited": "Modules",
+    "project.structure.proportion": "0.15",
+    "project.structure.side.proportion": "0.2",
+    "settings.editor.selected.configurable": "reference.settings.ide.settings.file-colors",
     "vue.rearranger.settings.migration": "true"
+  },
+  "keyToStringList": {
+    "DatabaseDriversLRU": [
+      "mysql"
+    ]
   }
 }]]></component>
   <component name="SharedIndexes">
     <attachedChunks>
       <set>
+        <option value="jdk-17.0.10-temurin-17.0.10-3183f394aec4-87f3d08d" />
         <option value="jdk-21.0.1-temurin-21.0.1-3183f394aec4-be7c972f" />
       </set>
     </attachedChunks>
@@ -44,10 +79,23 @@
       <option name="presentableId" value="Default" />
       <updated>1709471142488</updated>
       <workItem from="1709471143793" duration="280000" />
+      <workItem from="1709785245008" duration="380000" />
+      <workItem from="1709785646709" duration="722000" />
     </task>
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
     <option name="version" value="3" />
+  </component>
+  <component name="Vcs.Log.Tabs.Properties">
+    <option name="TAB_STATES">
+      <map>
+        <entry key="MAIN">
+          <value>
+            <State />
+          </value>
+        </entry>
+      </map>
+    </option>
   </component>
 </project>
