@@ -1,9 +1,7 @@
 package com.seantong.springbootmall.rowmapper;
-
 import com.seantong.springbootmall.constant.ProductCategory;
 import com.seantong.springbootmall.model.Product;
 import org.springframework.jdbc.core.RowMapper;
-
 import java.sql.ResultSet;
 import java.sql.SQLException;
 

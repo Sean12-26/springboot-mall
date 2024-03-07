@@ -1,6 +1,9 @@
 package com.seantong.springbootmall.dao.impl;
 import com.seantong.springbootmall.dao.OrderDao;
+import com.seantong.springbootmall.model.Order;
 import com.seantong.springbootmall.model.OrderItem;
+import com.seantong.springbootmall.rowmapper.OrderItemRowMapper;
+import com.seantong.springbootmall.rowmapper.OrderRowMapper;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.jdbc.core.namedparam.MapSqlParameterSource;
 import org.springframework.jdbc.core.namedparam.NamedParameterJdbcTemplate;
@@ -9,16 +12,42 @@ import org.springframework.jdbc.support.KeyHolder;
 import org.springframework.stereotype.Component;
 import javax.swing.plaf.basic.BasicTreeUI;
 import java.security.spec.NamedParameterSpec;
-import java.util.Date;
-import java.util.HashMap;
-import java.util.List;
-import java.util.Map;
+import java.util.*;
 
 @Component
 public class OrderDaoImpl implements OrderDao{
 
     @Autowired
     private NamedParameterJdbcTemplate namedParameterJdbcTemplate;
+
+    @Override
+    public Order getOrderById(Integer orderId) {
+        String sql = "SELECT * FROM `order` WHERE order_id = :orderId";
+
+        Map<String,Object> map = new HashMap<>();
+        map.put("orderId", orderId);
+        List<Order> orderList = namedParameterJdbcTemplate.query(sql, map, new OrderRowMapper());
+
+        if(orderList.size() > 0){
+            return orderList.get(0);
+        }else {
+            return null;
+        }
+    }
+
+    @Override
+    public List<OrderItem> getOrderItemsByOrderId(Integer orderId) {
+        String sql = "SELECT  oi.order_item_id , oi.order_id, oi.product_id , oi.quantity, oi.amount, p.product_name, p.image_url "+
+                    "FROM order_item as oi "+
+                    "LEFT JOIN product as p ON oi.product_id = p.product_id " +
+                    "WHERE oi.order_id = :orderId ";
+
+        Map<String,Object> map = new HashMap<>() ;
+        map.put("orderId", orderId);
+        List<OrderItem> orderItemList = namedParameterJdbcTemplate.query(sql ,map , new OrderItemRowMapper());
+
+        return orderItemList;
+    }
 
     @Override
     public Integer createOrder(Integer userId, Integer totalAmount){
