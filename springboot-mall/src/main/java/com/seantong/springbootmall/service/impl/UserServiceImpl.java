@@ -1,6 +1,7 @@
 package com.seantong.springbootmall.service.impl;
 
 import com.seantong.springbootmall.dao.UserDao;
+import com.seantong.springbootmall.dto.UserLoginRequest;
 import com.seantong.springbootmall.dto.UserRegisterRequest;
 import com.seantong.springbootmall.model.User;
 import com.seantong.springbootmall.service.UserService;
@@ -35,5 +36,22 @@ public class UserServiceImpl implements UserService {
         }
         //創建帳號
         return userDao.createUser(userRegisterRequest);
+    }
+
+    @Override
+    public User login(UserLoginRequest userLoginRequest) {
+        User user = userDao.getUserByEmail(userLoginRequest.getEmail());
+
+        if(user == null){
+            log.warn("該email {} 尚未被註冊" ,userLoginRequest.getEmail());
+            throw new ResponseStatusException(HttpStatus.BAD_REQUEST);
+        }
+        
+        if(user.getPassword().equals(userLoginRequest.getPassword())){
+            return user;
+        }else {
+            log.warn("email {} 密碼不正確", userLoginRequest.getPassword());
+            throw new ResponseStatusException(HttpStatus.BAD_REQUEST);
+        }
     }
 }
