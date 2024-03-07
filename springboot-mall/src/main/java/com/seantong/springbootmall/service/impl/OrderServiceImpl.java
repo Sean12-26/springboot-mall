@@ -1,10 +1,10 @@
 package com.seantong.springbootmall.service.impl;
-
 import com.seantong.springbootmall.dao.OrderDao;
 import com.seantong.springbootmall.dao.ProductDao;
 import com.seantong.springbootmall.dao.UserDao;
 import com.seantong.springbootmall.dto.BuyItem;
 import com.seantong.springbootmall.dto.CreateOrderRequest;
+import com.seantong.springbootmall.dto.OrderQueryParams;
 import com.seantong.springbootmall.model.Order;
 import com.seantong.springbootmall.model.OrderItem;
 import com.seantong.springbootmall.model.Product;
@@ -17,7 +17,6 @@ import org.springframework.http.HttpStatus;
 import org.springframework.stereotype.Component;
 import org.springframework.transaction.annotation.Transactional;
 import org.springframework.web.server.ResponseStatusException;
-
 import java.beans.Transient;
 import java.util.ArrayList;
 import java.util.List;
@@ -32,6 +31,23 @@ public class OrderServiceImpl implements OrderService {
     private ProductDao productDao;
     @Autowired
     private UserDao userDao;
+
+
+    @Override
+    public Integer countOrder(OrderQueryParams orderQueryParams){
+        return orderDao.countOrder(orderQueryParams);
+    }
+    @Override
+    public List<Order> getOrders(OrderQueryParams orderQueryParams){
+        List<Order> orderList = orderDao.getOrders(orderQueryParams);
+
+        for(Order order: orderList){
+            List<OrderItem> orderItemList = orderDao.getOrderItemsByOrderId(order.getOrderId());
+
+            order.setOrderItemList(orderItemList);
+        }
+        return orderList;
+    }
 
     @Override
     public Order getOrderById(Integer orderId) {
